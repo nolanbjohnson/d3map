@@ -93,8 +93,8 @@ d3.json("uk.json", function(error, uk) {
 		.text( function(d) { return d.properties.name; } 	);
 
 	svg.selectAll(".place-label")
-		.attr("x", function(d) { return d.geometry.coordinates[0] > -1 ? 6 : -6; })
-		.style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 ? "start" : "end"; });
+		.attr("x", function(d) { return d.geometry.coordinates[0] > -1 || d.properties.name === "Coventry" ? 6 : -6; })
+		.style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 || d.properties.name === "Coventry" ? "start" : "end"; });
 
 	svg.selectAll(".subunit-label")
 		.data(topojson.feature(uk, uk.objects.subunits).features)
